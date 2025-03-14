@@ -1,5 +1,7 @@
 # For random responses
 import random 
+#Import regex library
+import re
 
 # Chatbot greets the user.
 print("Hello! Welcome to AI ChatBot. When you want to exit the conversation, type 'bye'.")
@@ -11,15 +13,16 @@ while True:
     if user_input == "bye":
         print("ChatBot: Goodbye!")
         break
-    elif "hello" in user_input or "hi" in user_input:
+
+    elif re.search(r"\bhello\b|\bhello\b|\bhey\b", user_input):
         print("ChatBot: Hi there! How can I assist you today?")
-    elif "how's it going" in user_input or "how are you" in user_input:
+    elif re.search(r"how. *you", user_input):      #How are you, how's it going, etc
         print("ChatBot: I am great, how are you?")
     elif "what's up" in user_input:
         print("ChatBot: The ceiling.") 
-    elif "what is your name" in user_input:
+    elif re.search(r"what is your name", user_input):
         print("ChatBot: I am ChatBot and here to assist you!")
-    elif "fun fact" in user_input:
+    elif re.search(r"fun fact", user_input):
         jokes = [
                 "Crocodiles can gallop like a horse.",
                 "Nintendo is 130 years old",
